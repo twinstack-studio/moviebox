@@ -228,7 +228,7 @@ class _InsightsScreenState extends State<InsightsScreen> {
               await Notifications.requestPermission();
               await Notifications.showNow(
                 key: 'test',
-                title: '🎬 Test reminder from Parda',
+                title: '🎬 Test reminder from MovieBox',
                 body: 'Notifications are working on this phone.',
               );
             },

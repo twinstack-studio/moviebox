@@ -6,7 +6,7 @@ import '../theme.dart';
 import 'animations.dart';
 import '../l10n.dart';
 
-/// Parda Rewards: 1 point for every Rs. 100 paid in the app.
+/// MovieBox Rewards: 1 point for every Rs. 100 paid in the app.
 int rewardPoints(int amountPaid) => amountPaid ~/ 100;
 
 class RewardTier {
@@ -94,7 +94,7 @@ class RewardsCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              tr('Parda Rewards'),
+                              tr('MovieBox Rewards'),
                               style: TextStyle(
                                 color: AppColors.muted,
                                 fontSize: 12,
@@ -167,7 +167,7 @@ class RewardsCard extends StatelessWidget {
           padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
           children: [
             Text(
-              tr('Parda Rewards'),
+              tr('MovieBox Rewards'),
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.w900),
             ),
             SizedBox(height: 4),

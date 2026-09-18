@@ -29,7 +29,7 @@ Future<void> shareBooking(BuildContext context, Booking b) {
       '🗓 ${fmtDateLong(b.showStart)}, ${fmtTime(b.showStart)}\n'
       '💺 Seats ${b.seats.join(', ')}\n'
       '🎟 Booking ID ${b.id}$each\n\n'
-      'Booked on the Parda app';
+      'Booked on the MovieBox app';
   return openLink(
     context,
     Uri.parse('https://wa.me/?text=${Uri.encodeComponent(msg)}'),

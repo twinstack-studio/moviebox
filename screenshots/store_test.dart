@@ -3,25 +3,24 @@
 //   flutter test screenshots/store_test.dart --update-goldens
 //
 // Output: screenshots/store/*.png (1080 x 1920, plus a 1024 x 500 feature
-// graphic). Posters are drawn by the app itself, so no network is needed.
-// Local poster images in test/screenshot_assets are used if present.
+// graphic). Posters come from assets/posters, so no network is needed.
 //
 // ignore_for_file: invalid_use_of_visible_for_testing_member
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:parda_cinemas/data/repository.dart';
-import 'package:parda_cinemas/l10n.dart';
-import 'package:parda_cinemas/models.dart';
-import 'package:parda_cinemas/screens/home_shell.dart';
-import 'package:parda_cinemas/screens/movie_detail_screen.dart';
-import 'package:parda_cinemas/screens/profile_screen.dart';
-import 'package:parda_cinemas/screens/seat_screen.dart';
-import 'package:parda_cinemas/screens/snacks_screen.dart';
-import 'package:parda_cinemas/screens/tickets_screen.dart';
-import 'package:parda_cinemas/state/app_state.dart';
-import 'package:parda_cinemas/theme.dart';
-import 'package:parda_cinemas/widgets/common.dart';
+import 'package:moviebox/data/repository.dart';
+import 'package:moviebox/l10n.dart';
+import 'package:moviebox/models.dart';
+import 'package:moviebox/screens/home_shell.dart';
+import 'package:moviebox/screens/movie_detail_screen.dart';
+import 'package:moviebox/screens/profile_screen.dart';
+import 'package:moviebox/screens/seat_screen.dart';
+import 'package:moviebox/screens/snacks_screen.dart';
+import 'package:moviebox/screens/tickets_screen.dart';
+import 'package:moviebox/state/app_state.dart';
+import 'package:moviebox/theme.dart';
+import 'package:moviebox/widgets/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -35,12 +34,9 @@ void main() {
   setUpAll(_loadFonts);
 
   setUp(() {
-    posterImageOverride = _localPoster;
     appLanguage = 'en';
     AppColors.light = false;
   });
-
-  tearDown(() => posterImageOverride = null);
 
   testWidgets('01 home', (tester) async {
     final state = await _seed(tester);
@@ -139,7 +135,7 @@ void main() {
       tester,
       '06_rewards',
       'Earn on every booking',
-      'Parda Rewards: Silver, Gold and Platinum perks',
+      'MovieBox Rewards: Silver, Gold and Platinum perks',
     );
   });
 
@@ -184,18 +180,6 @@ void main() {
 }
 
 // ---------------------------------------------------------------- harness
-
-/// Cached so the image the widget asks for is the same instance we
-/// pre-cached (otherwise the cache misses and the poster paints late).
-final _posterCache = <String, ImageProvider>{};
-
-ImageProvider _localPoster(Movie movie) =>
-    _posterCache.putIfAbsent(movie.id, () {
-      final file = File('test/screenshot_assets/${movie.id}.jpg');
-      return file.existsSync()
-          ? MemoryImage(file.readAsBytesSync())
-          : MemoryImage(Uint8List(0));
-    });
 
 Future<void> _loadFonts() async {
   Future<void> load(String family, Iterable<String> paths) async {
@@ -242,7 +226,7 @@ Future<AppState> _seed(
     movieId: 'spiderman-bnd',
     movieTitle: 'Spider-Man: Brand New Day',
     cinemaId: 'johar-town',
-    cinemaName: 'Parda Johar Town',
+    cinemaName: 'MovieBox Johar Town',
     cinemaPhone: '+923026265019',
     showtimeId: 'shot-demo',
     showStart: DateTime(show.year, show.month, show.day, 20),
@@ -265,7 +249,7 @@ Future<AppState> _seed(
     movieId: 'the-odyssey',
     movieTitle: 'The Odyssey',
     cinemaId: 'johar-town',
-    cinemaName: 'Parda Johar Town',
+    cinemaName: 'MovieBox Johar Town',
     cinemaPhone: '+923026265019',
     showtimeId: 'shot-past',
     showStart: DateTime.now().subtract(const Duration(days: 9)),
@@ -335,16 +319,16 @@ Future<void> _pumpApp(WidgetTester tester, AppState state, Widget home) async {
 }
 
 Future<void> _precachePosters(WidgetTester tester) async {
-  final dir = Directory('test/screenshot_assets');
-  if (!dir.existsSync()) return;
   final context = tester.element(find.byType(Directionality).first);
   // Real async: repository calls and image decoding need a live event loop.
   await tester.runAsync(() async {
-    for (final file in dir.listSync().whereType<File>()) {
+    for (final file in Directory(
+      'assets/posters',
+    ).listSync().whereType<File>()) {
       final id = file.uri.pathSegments.last.replaceAll('.jpg', '');
       final movie = MockCinemaRepository.movieById(id);
       if (movie == null) continue;
-      await precacheImage(_localPoster(movie), context);
+      await precacheImage(AssetImage(movie.posterAsset), context);
     }
   });
 }

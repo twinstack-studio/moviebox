@@ -111,7 +111,7 @@ class _CinemaTile extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Parda ${cinema.name}',
+                          'MovieBox ${cinema.name}',
                           style: TextStyle(
                             fontWeight: FontWeight.w800,
                             fontSize: 16,
@@ -198,7 +198,7 @@ class _CinemaDetailScreenState extends State<CinemaDetailScreen> {
     final fav = state.cinemaId == c.id;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Parda ${c.name}'),
+        title: Text('MovieBox ${c.name}'),
         actions: [
           IconButton(
             onPressed: () => state.setCinema(fav ? null : c),

@@ -44,7 +44,6 @@ int stableHash(String s) {
 
 DateTime dayOnly(DateTime d) => DateTime(d.year, d.month, d.day);
 
-
 class MockCinemaRepository implements CinemaRepository {
   static const _latency = Duration(milliseconds: 350);
   final Map<String, Set<String>> _booked = {};
@@ -480,7 +479,7 @@ class MockCinemaRepository implements CinemaRepository {
       Color(0xFF2563EB),
       Color(0xFF1E1B4B),
     ], Icons.school_outlined),
-    Offer('First Booking', '10% off your first app booking', 'PARDA10', [
+    Offer('First Booking', '10% off your first app booking', 'MOVIEBOX10', [
       Color(0xFFF5B942),
       Color(0xFF92400E),
     ], Icons.celebration_outlined),
@@ -489,7 +488,7 @@ class MockCinemaRepository implements CinemaRepository {
   /// Percentage discount on tickets for a promo code, or null if invalid.
   static int? promoPercent(String code, DateTime showDate) {
     switch (code.trim().toUpperCase()) {
-      case 'PARDA10':
+      case 'MOVIEBOX10':
         return 10;
       case 'STUDENT15':
         return 15;

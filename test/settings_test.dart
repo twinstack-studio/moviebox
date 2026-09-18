@@ -1,8 +1,8 @@
-import 'package:parda_cinemas/l10n.dart';
-import 'package:parda_cinemas/main.dart';
-import 'package:parda_cinemas/services/analytics.dart';
-import 'package:parda_cinemas/state/app_state.dart';
-import 'package:parda_cinemas/theme.dart';
+import 'package:moviebox/l10n.dart';
+import 'package:moviebox/main.dart';
+import 'package:moviebox/services/analytics.dart';
+import 'package:moviebox/state/app_state.dart';
+import 'package:moviebox/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -71,7 +71,7 @@ void main() {
     SharedPreferences.setMockInitialValues({'onboarded': true});
     final state = AppState();
     await state.load();
-    await tester.pumpWidget(PardaApp(state: state));
+    await tester.pumpWidget(MovieBoxApp(state: state));
     await tester.pump(const Duration(seconds: 2));
     await tester.pump(const Duration(milliseconds: 600));
     await tester.pump(const Duration(milliseconds: 600));

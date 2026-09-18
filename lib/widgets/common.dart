@@ -61,7 +61,7 @@ class BrandLogo extends StatelessWidget {
         ),
         SizedBox(width: size * 0.45),
         Text(
-          'PARDA',
+          'MOVIEBOX',
           style: TextStyle(
             fontSize: size,
             fontWeight: FontWeight.w900,
@@ -74,10 +74,7 @@ class BrandLogo extends StatelessWidget {
   }
 }
 
-/// Lets screenshot tests supply poster images without a network call.
-ImageProvider Function(Movie movie)? posterImageOverride;
-
-/// Poster: remote image when available, otherwise generated art.
+/// Poster: bundled image when available, otherwise generated art.
 class PosterArt extends StatelessWidget {
   final Movie movie;
   final bool showTitle;
@@ -92,38 +89,30 @@ class PosterArt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final art = _GeneratedPoster(movie: movie, showTitle: showTitle);
-    final url = movie.posterUrl;
     return ClipRRect(
       borderRadius: BorderRadius.circular(radius),
-      child: url == null
-          ? art
-          // Generated art shows underneath while loading or if the image
-          // fails, so a poster slot is never blank.
-          : Stack(
-              fit: StackFit.expand,
-              children: [
-                art,
-                Image(
-                  image:
-                      posterImageOverride?.call(movie) ??
-                      NetworkImage(
-                        url,
-                        webHtmlElementStrategy: WebHtmlElementStrategy.prefer,
-                      ),
-                  fit: BoxFit.cover,
-                  alignment: Alignment.topCenter,
-                  gaplessPlayback: true,
-                  frameBuilder: (_, child, frame, sync) => sync
-                      ? child
-                      : AnimatedOpacity(
-                          opacity: frame == null ? 0 : 1,
-                          duration: Duration(milliseconds: 300),
-                          child: child,
-                        ),
-                  errorBuilder: (_, _, _) => SizedBox.shrink(),
-                ),
-              ],
-            ),
+      // Generated art shows underneath while loading or if the image is
+      // missing, so a poster slot is never blank.
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          art,
+          Image(
+            image: AssetImage(movie.posterAsset),
+            fit: BoxFit.cover,
+            alignment: Alignment.topCenter,
+            gaplessPlayback: true,
+            frameBuilder: (_, child, frame, sync) => sync
+                ? child
+                : AnimatedOpacity(
+                    opacity: frame == null ? 0 : 1,
+                    duration: Duration(milliseconds: 300),
+                    child: child,
+                  ),
+            errorBuilder: (_, _, _) => SizedBox.shrink(),
+          ),
+        ],
+      ),
     );
   }
 }

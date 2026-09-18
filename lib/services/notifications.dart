@@ -16,7 +16,7 @@ class Notifications {
 
   static const _details = NotificationDetails(
     android: AndroidNotificationDetails(
-      'parda_reminders',
+      'moviebox_reminders',
       'Show reminders',
       channelDescription: 'Reminders before your show and when bookings open',
       importance: Importance.high,

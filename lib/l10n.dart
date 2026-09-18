@@ -194,7 +194,7 @@ const Map<String, String> _ur = {
       'درست موبائل نمبر لکھیں، مثلاً 03001234567',
   'Enter a valid email': 'درست ای میل لکھیں',
   'Promo code': 'پرومو کوڈ',
-  'e.g. PARDA10': 'مثلاً PARDA10',
+  'e.g. MOVIEBOX10': 'مثلاً MOVIEBOX10',
   'Apply': 'لگائیں',
   '{0} applied: {1}% off tickets 🎉': '{0} لگ گیا: ٹکٹوں پر {1}٪ رعایت 🎉',
   'This code is not valid': 'یہ کوڈ درست نہیں',
@@ -223,8 +223,8 @@ const Map<String, String> _ur = {
   'Convenience fee': 'سروس فیس',
   'Discount ({0})': 'رعایت ({0})',
   'Total payable': 'کل رقم',
-  'You\'ll earn {0} Parda Rewards points':
-      'آپ کو {0} پردہ ریوارڈز پوائنٹس ملیں گے',
+  'You\'ll earn {0} MovieBox Rewards points':
+      'آپ کو {0} مووی باکس ریوارڈز پوائنٹس ملیں گے',
   'Secure payment. Free cancellation up to 2 hours before the show, refunded to your original payment method.':
       'محفوظ ادائیگی۔ شو سے 2 گھنٹے پہلے تک مفت منسوخی، رقم اسی طریقے سے واپس۔',
   'Total': 'کل',
@@ -245,7 +245,7 @@ const Map<String, String> _ur = {
   'Booking confirmed!': 'بکنگ کنفرم ہو گئی!',
   'Your ticket is saved in the Tickets tab and works offline. Show the QR code at the entrance.':
       'آپ کا ٹکٹ ٹکٹس ٹیب میں محفوظ ہے اور بغیر انٹرنیٹ بھی کھلتا ہے۔ داخلے پر QR کوڈ دکھائیں۔',
-  ' Parda Rewards points': ' پردہ ریوارڈز پوائنٹس',
+  ' MovieBox Rewards points': ' مووی باکس ریوارڈز پوائنٹس',
   'Share with friends on WhatsApp': 'دوستوں کو واٹس ایپ پر بھیجیں',
   'Back to home': 'ہوم پر واپس',
   'My tickets': 'میرے ٹکٹ',
@@ -435,7 +435,7 @@ const Map<String, String> _ur = {
   'Start exploring': 'شروع کریں',
 
   // Rewards
-  'Parda Rewards': 'پردہ ریوارڈز',
+  'MovieBox Rewards': 'مووی باکس ریوارڈز',
   '{0} member': '{0} ممبر',
   'Silver': 'سلور',
   'Platinum': 'پلاٹینم',
@@ -472,4 +472,11 @@ const Map<String, String> _ur = {
   'Grab the best seats before they\'re gone!':
       'بہترین سیٹیں ختم ہونے سے پہلے لے لیں!',
   '{0}, {1}!': '{0}، {1}',
+  'Demo app · No real payments · Built by TwinStack Studio':
+      'ڈیمو ایپ · کوئی اصل ادائیگی نہیں · TwinStack Studio کی تیار کردہ',
+  'Demo app: no real payments': 'ڈیمو ایپ: کوئی اصل ادائیگی نہیں',
+  'Nothing is charged and no details leave your device. Only the demo card {0} is accepted.':
+      'کوئی رقم نہیں کٹتی اور کوئی تفصیل آپ کے فون سے باہر نہیں جاتی۔ صرف ڈیمو کارڈ {0} قبول ہوتا ہے۔',
+  'Use demo details': 'ڈیمو تفصیلات استعمال کریں',
+  'Demo app: use the card {0}': 'ڈیمو ایپ: کارڈ {0} استعمال کریں',
 };
