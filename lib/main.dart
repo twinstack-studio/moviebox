@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
+import 'demo.dart';
 import 'screens/onboarding.dart';
 import 'services/analytics.dart';
 import 'services/display.dart';
@@ -41,18 +42,18 @@ Future<void> main() async {
   unawaited(Display.useHighestRefreshRate());
   Analytics.log('app_open');
 
-  runApp(PardaApp(state: state));
+  runApp(MovieBoxApp(state: state));
 }
 
-class PardaApp extends StatefulWidget {
+class MovieBoxApp extends StatefulWidget {
   final AppState state;
-  const PardaApp({super.key, required this.state});
+  const MovieBoxApp({super.key, required this.state});
 
   @override
-  State<PardaApp> createState() => _PardaAppState();
+  State<MovieBoxApp> createState() => _MovieBoxAppState();
 }
 
-class _PardaAppState extends State<PardaApp> with WidgetsBindingObserver {
+class _MovieBoxAppState extends State<MovieBoxApp> with WidgetsBindingObserver {
   ThemeData? _theme;
   bool? _themeIsLight;
 
@@ -94,13 +95,17 @@ class _PardaAppState extends State<PardaApp> with WidgetsBindingObserver {
             _themeIsLight = AppColors.light;
           }
           return MaterialApp(
-            title: 'Parda Cinemas',
+            title: 'MovieBox',
             debugShowCheckedModeBanner: false,
             theme: _theme,
             locale: Locale(widget.state.language),
             supportedLocales: const [Locale('en'), Locale('ur')],
             localizationsDelegates: GlobalMaterialLocalizations.delegates,
             home: const SplashScreen(),
+            // The public web demo carries a banner on every screen.
+            builder: kIsWeb && kDemoMode
+                ? (context, child) => DemoWebFrame(child: child!)
+                : null,
           );
         },
       ),

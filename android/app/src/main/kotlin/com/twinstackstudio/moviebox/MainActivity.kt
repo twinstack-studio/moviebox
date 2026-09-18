@@ -1,4 +1,4 @@
-package com.twinstackstudio.parda
+package com.twinstackstudio.moviebox
 
 import io.flutter.embedding.android.FlutterActivity
 

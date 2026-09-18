@@ -416,7 +416,7 @@ class _ShowtimeGroups extends StatelessWidget {
                             SizedBox(width: 8),
                             Expanded(
                               child: Text(
-                                'Parda ${c.name}',
+                                'MovieBox ${c.name}',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w800,
                                   fontSize: 16,

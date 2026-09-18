@@ -1,5 +1,5 @@
-name: parda_cinemas
-description: "Parda Cinemas - book movie tickets, snacks and more."
+name: moviebox
+description: "MovieBox - book movie tickets, snacks and more."
 publish_to: 'none'
 version: 2.0.0+1
 
@@ -28,6 +28,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/posters/
   fonts:
     - family: Poppins
       fonts:

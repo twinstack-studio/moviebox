@@ -895,7 +895,7 @@ class _CinemaCard extends StatelessWidget {
                   Text(
                     c == null
                         ? tr('Pick your favourite cinema')
-                        : 'Parda ${c.name}',
+                        : 'MovieBox ${c.name}',
                     style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
                   ),
                   SizedBox(height: 2),

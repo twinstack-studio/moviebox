@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-import 'package:parda_cinemas/data/repository.dart';
-import 'package:parda_cinemas/main.dart';
-import 'package:parda_cinemas/models.dart';
-import 'package:parda_cinemas/screens/seat_screen.dart';
-import 'package:parda_cinemas/state/app_state.dart';
-import 'package:parda_cinemas/widgets/rewards.dart';
+import 'package:moviebox/data/repository.dart';
+import 'package:moviebox/main.dart';
+import 'package:moviebox/models.dart';
+import 'package:moviebox/screens/seat_screen.dart';
+import 'package:moviebox/state/app_state.dart';
+import 'package:moviebox/widgets/rewards.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -17,7 +17,7 @@ void main() {
       movieId: 'the-odyssey',
       movieTitle: 'The Odyssey',
       cinemaId: 'johar-town',
-      cinemaName: 'Parda Johar Town',
+      cinemaName: 'MovieBox Johar Town',
       cinemaPhone: '0300',
       showtimeId: 's1',
       showStart: DateTime(2026, 9, 20, 20),
@@ -99,7 +99,7 @@ void main() {
 
   testWidgets('Onboarding leads to home', (tester) async {
     SharedPreferences.setMockInitialValues({});
-    await tester.pumpWidget(PardaApp(state: AppState()));
+    await tester.pumpWidget(MovieBoxApp(state: AppState()));
     // The app has looping animations, so pump fixed durations instead of
     // pumpAndSettle.
     await tester.pump(const Duration(seconds: 2));
@@ -117,7 +117,7 @@ void main() {
     await tester.pump(const Duration(seconds: 1));
     // Sections further down are built lazily as you scroll, so check the
     // ones visible on the first screen.
-    expect(find.text('PARDA'), findsWidgets);
+    expect(find.text('MOVIEBOX'), findsWidgets);
     expect(find.text('What\'s your mood?'), findsOneWidget);
 
     // Dispose the tree so periodic timers are cancelled.

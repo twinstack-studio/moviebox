@@ -682,7 +682,7 @@ class HelpScreen extends StatelessWidget {
                   for (final c in cinemas)
                     ListTile(
                       leading: Icon(Icons.theaters_outlined),
-                      title: Text('Parda ${c.name}'),
+                      title: Text('MovieBox ${c.name}'),
                       subtitle: Text(
                         '${c.city} • ${c.phone}',
                         style: TextStyle(color: AppColors.muted, fontSize: 12),

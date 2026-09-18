@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../data/repository.dart';
+import '../demo.dart';
 import '../models.dart';
 import '../state/app_state.dart';
 import '../theme.dart';
@@ -243,7 +244,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       movieId: draft.movie.id,
       movieTitle: draft.movie.title,
       cinemaId: draft.cinema.id,
-      cinemaName: 'Parda ${draft.cinema.name}',
+      cinemaName: 'MovieBox ${draft.cinema.name}',
       cinemaPhone: draft.cinema.phone,
       showtimeId: draft.showtime.id,
       showStart: draft.showtime.start,
@@ -322,7 +323,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                               ),
                               SizedBox(height: 4),
                               Text(
-                                'Parda ${draft.cinema.name} • ${s.screen}',
+                                'MovieBox ${draft.cinema.name} • ${s.screen}',
                                 style: TextStyle(
                                   color: AppColors.muted,
                                   fontSize: 13,
@@ -410,7 +411,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         controller: _promo,
                         textCapitalization: TextCapitalization.characters,
                         decoration: InputDecoration(
-                          hintText: tr('e.g. PARDA10'),
+                          hintText: tr('e.g. MOVIEBOX10'),
                           prefixIcon: Icon(Icons.local_offer_outlined),
                           errorText: _promoError,
                           helperText: _promoCode == null
@@ -436,6 +437,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 ),
               ),
               stagger(_title(tr('Payment method'))),
+              if (kDemoMode)
+                DemoPaymentNotice(onUseDemoDetails: _useDemoDetails),
               for (final m in PayMethod.values) stagger(_methodTile(m)),
               AnimatedSize(
                 duration: Duration(milliseconds: 220),
@@ -520,7 +523,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           ),
                           SizedBox(width: 6),
                           Text(
-                            tr('You\'ll earn {0} Parda Rewards points', [
+                            tr('You\'ll earn {0} MovieBox Rewards points', [
                               rewardPoints(_total),
                             ]),
                             style: TextStyle(
@@ -578,6 +581,15 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         ),
       ),
     );
+  }
+
+  void _useDemoDetails() {
+    setState(() {
+      _cardNo.text = kDemoCardNumber;
+      _cardExp.text = kDemoCardExpiry;
+      _cardCvv.text = kDemoCardCvv;
+      _wallet.text = kDemoWallet;
+    });
   }
 
   Widget _title(String t) => Padding(
@@ -684,6 +696,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             final d = (v ?? '').replaceAll(' ', '');
             if (d.length < 15 || !_luhn(d)) {
               return tr('Enter a valid card number');
+            }
+            if (kDemoMode && d != kDemoCardNumber.replaceAll(' ', '')) {
+              return tr('Demo app: use the card {0}', [kDemoCardNumber]);
             }
             return null;
           },
@@ -890,7 +905,7 @@ class BookingSuccessScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            tr(' Parda Rewards points'),
+                            tr(' MovieBox Rewards points'),
                             style: TextStyle(color: AppColors.gold),
                           ),
                         ],

@@ -27,9 +27,6 @@ class Movie {
   final IconData icon;
   final List<String> formats;
 
-  /// Remote poster image. When null or failing to load, generated art is shown.
-  final String? posterUrl;
-
   const Movie({
     required this.id,
     required this.title,
@@ -46,8 +43,10 @@ class Movie {
     required this.icon,
     this.rating,
     this.formats = const ['2D'],
-    this.posterUrl,
   });
+
+  /// Bundled poster image. If it is missing, generated art is shown instead.
+  String get posterAsset => 'assets/posters/$id.jpg';
 
   String get durationLabel => '${durationMin ~/ 60}h ${durationMin % 60}m';
 }

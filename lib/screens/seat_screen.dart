@@ -256,7 +256,7 @@ class _SeatScreenState extends State<SeatScreen> {
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w800),
             ),
             Text(
-              'Parda ${draft.cinema.name} • ${fmtDate(s.start)}, ${fmtTime(s.start)} • ${s.format}',
+              'MovieBox ${draft.cinema.name} • ${fmtDate(s.start)}, ${fmtTime(s.start)} • ${s.format}',
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(fontSize: 12, color: AppColors.muted),

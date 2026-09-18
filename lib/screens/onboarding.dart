@@ -371,7 +371,7 @@ class _CityStep extends StatelessWidget {
                     Icons.theaters_outlined,
                     color: AppColors.primary,
                   ),
-                  title: Text('Parda ${c.name}'),
+                  title: Text('MovieBox ${c.name}'),
                   subtitle: Text(
                     c.address,
                     maxLines: 1,

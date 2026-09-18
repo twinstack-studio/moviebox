@@ -106,7 +106,7 @@ Future<void> showCinemaPicker(BuildContext context) {
           for (final c in cinemas)
             ListTile(
               leading: Icon(Icons.theaters_outlined),
-              title: Text('Parda ${c.name}'),
+              title: Text('MovieBox ${c.name}'),
               subtitle: Text(
                 c.address,
                 maxLines: 1,

@@ -1,6 +1,6 @@
 {
-    "name": "Parda Cinemas",
-    "short_name": "Parda Cinemas",
+    "name": "MovieBox",
+    "short_name": "MovieBox",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0B0B10",
