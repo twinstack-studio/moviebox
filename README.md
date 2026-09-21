@@ -10,7 +10,7 @@ pick seats on a live seat map, pre-order snacks, pay with a card or a mobile
 wallet, and carry a QR ticket that works offline, in English or Urdu.
 
 [**Open the live demo**](https://moviebox-twinstack.vercel.app) ·
-[**Work with TwinStack Studio**](mailto:hello.twinstackstudio@gmail.com)
+[**Work with TwinStack Studio**](https://twinstackstudio.com/contact)
 
 | | | |
 | --- | --- | --- |
@@ -124,6 +124,6 @@ dashboards, portals, automation, and AI-powered products.
 
 [GitHub](https://github.com/twinstack-studio) ·
 [Website](https://twinstackstudio.com) ·
-[Email](mailto:hello.twinstackstudio@gmail.com)
+[Email](mailto:hello@twinstackstudio.com)
 
 © 2026 TwinStack Studio. All rights reserved. See [LICENSE](./LICENSE).
