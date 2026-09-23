@@ -2,14 +2,14 @@
 
 [![CI](https://github.com/twinstack-studio/moviebox/actions/workflows/ci.yml/badge.svg)](https://github.com/twinstack-studio/moviebox/actions/workflows/ci.yml)
 [![License: All rights reserved](https://img.shields.io/badge/License-All_rights_reserved-e62a42.svg)](./LICENSE)
-[![Live Demo](https://img.shields.io/badge/Live_Demo-Open_App-e62a42.svg)](https://moviebox-twinstack.vercel.app)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Open_App-e62a42.svg)](https://moviebox.twinstackstudio.com)
 
 MovieBox is a movie ticket booking app for a cinema chain in Pakistan, built with Flutter
 for Android, iOS and the web from one codebase. Guests browse what is showing,
 pick seats on a live seat map, pre-order snacks, pay with a card or a mobile
 wallet, and carry a QR ticket that works offline, in English or Urdu.
 
-[**Open the live demo**](https://moviebox-twinstack.vercel.app) ·
+[**Open the live demo**](https://moviebox.twinstackstudio.com) ·
 [**Work with TwinStack Studio**](https://twinstackstudio.com/contact)
 
 | | | |
